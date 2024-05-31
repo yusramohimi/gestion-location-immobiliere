@@ -48,7 +48,7 @@ $clients = $statement ->fetchAll(PDO::FETCH_ASSOC);
                     <td class=" p-2 md:border md:border-grey-500 flex justify-center gap-5">
                     
                         <a href="modifier.php?id= "><button type="submit" name="modifier" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded">Modifier</button></a>
-                        <a href="supprimer.php?id= <?php echo $client['id_client']; ?>"><button type="submit" name="supprimer" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Supprimer</button></a>
+                        <a href="supprimer.php?id= <?php echo $client['id_client']; ?>"><button type="submit" name="supprimer" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded" id="supprimer" onclick="confirmSuppression(event)"> Supprimer</button></a>
 
                         
                     </td>
@@ -59,9 +59,8 @@ $clients = $statement ->fetchAll(PDO::FETCH_ASSOC);
     <script>
         
         function confirmSuppression(event) {
-            event.preventDefault();
-            if (confirm('Êtes-vous sûr de vouloir supprimer ce stagiaire ?')) {
-                document.getElementById('form-supprimer').submit();
+            if (!confirm('Êtes-vous sûr de vouloir supprimer ce client ?')) {
+                event.preventDefault();
             }
         }
     </script>
